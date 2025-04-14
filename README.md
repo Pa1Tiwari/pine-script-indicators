@@ -31,7 +31,7 @@ The **Ultimate Multi-Timeframe Multi-Averages** indicator is a powerful tool for
 The script supports two fully customizable modules with three averages each, giving you deep control over your technical analysis setup.
 
 ### **Screenshot of Indicator in Action:**
-![[preview] MultiAverages MultiTimeframe I](screenshots/[preview] MultiAverages MultiTimeframe I.png)
+(screenshots/[preview] MultiAverages MultiTimeframe I.png)
 
 
 ## Pine Script Code:
