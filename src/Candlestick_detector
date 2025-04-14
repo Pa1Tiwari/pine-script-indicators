@@ -1,0 +1,82 @@
+//Created by Robert Waddell with special thanks to repo32 for his candlestick ID code, DavidR for EMA code and Chris Moody for barcolor code.
+//Also a shameless plug for repo32's "Price above/below EMA" and Chris Moody's "Stochastic MTF"
+//6/5/15
+//Candlestick analysis with buy signals
+//Candlestick patterns are identified above or below the price action.
+study(title ="Candlestick Patterns With EMA and Stochastic", overlay = true)
+
+length = input(12, minval=1), smoothK = input(3, minval=1), smoothD = input(3, minval=1)
+k = sma(stoch(close, high, low, length), smoothK)
+d = sma(k, smoothD)
+
+DojiSize = input(0.05, minval=0.01, title="Doji size")
+dj=(abs(open - close) <= (high - low) * DojiSize)
+plotchar(dj, title="Doji", text='Doji', color=white)
+
+es = (close[2] > open[2] and min(open[1], close[1]) > close[2] and open < min(open[1], close[1]) and close < open and close > .5 * open[2] - close[2])
+plotshape(es, title= "Evening Star",offset = -1, color=orange, style=shape.arrowdown, text="Evening\nStar")
+
+ms = (close[2] < open[2] and max(open[1], close[1]) < close[2] and open > max(open[1], close[1]) and close > max(open[1], close[1]) and close > .5 * open[2] - close[2])
+plotshape(ms,  title= "Morning Star",offset = -1, location=location.belowbar, color=lime, style=shape.arrowup,  text="Morn\nStar")
+
+
+ss = (open[1] < close[1] and open > close[1] and high - max(open, close) >= abs(open - close) * 3 and min(close, open) - low <= abs(open - close))
+plotshape(ss, title= "Shooting Star", location=location.belowbar, color=lime, style=shape.arrowup, text= "Shoot\nStar")
+
+ih=(((high - low)>3*(open -close)) and  ((high - close)/(.001 + high - low) > 0.6) and ((high - open)/(.001 + high - low) > 0.6))
+plotshape(ih, title= "Inverted Hammer", location=location.belowbar, color=white, style=shape.diamond, text="IH")
+
+h=(((high - low)>3*(open -close)) and  ((close - low)/(.001 + high - low) > 0.6) and ((open - low)/(.001 + high - low) > 0.6))
+plotshape(h, title= "Hammer", location=location.belowbar, color=white, style=shape.diamond, text="H")
+
+
+beh = (close[1] > open[1] and open > close and open <= close[1] and open[1] <= close and open - close < close[1] - open[1] )
+plotshape(beh, title= "Bearish Harami",  color=orange, style=shape.arrowdown, text="Bear\nHarami")
+
+blh = (open[1] > close[1] and close > open and close <= open[1] and close[1] <= open and close - open < open[1] - close[1] )
+plotshape(blh,  title= "Bullish Harami", location=location.belowbar, color=lime, style=shape.arrowup, text="Bull\nHarami")
+
+bee = (close[1] > open[1] and open > close and open >= close[1] and open[1] >= close and open - close > close[1] - open[1] )
+plotshape(bee,  title= "Bearish Engulfing", color=orange, style=shape.arrowdown, text="Bearish\nEngulf")
+
+ble = (open[1] > close[1] and close > open and close >= open[1] and close[1] >= open and close - open > open[1] - close[1] )
+plotshape(ble, title= "Bullish Engulfing", location=location.belowbar, color=lime, style=shape.arrowup, text="Bullish\nEngulf")
+
+upper = highest(10)[1]
+ps = (close[1] < open[1] and  open < low[1] and close > close[1] + ((open[1] - close[1])/2) and close < open[1])
+plotshape(ps, title= "Piercing Line", location=location.belowbar, color=lime, style=shape.arrowup, text="Pierc\nSig")
+
+blk = (open[1]>close[1] and open>=open[1] and close>open)
+plotshape(blk, title= "Bullish Kicker", location=location.belowbar, color=lime, style=shape.arrowup, text="Bull\nKick")
+
+
+bek = (open[1]<close[1] and open<=open[1] and close<=open)
+plotshape(bek, title= "Bearish Kicker", color=orange, style=shape.arrowdown, text="Bear\nKick")
+
+
+dcc = ((close[1]>open[1])and(((close[1]+open[1])/2)>close)and(open>close)and(open>close[1])and(close>open[1])and((open-close)/(.001+(high-low))>0.6))
+plotshape(dcc, title= "Dark Cloud Cover", color=orange, style=shape.arrowdown, text="Dark\nCloud")
+
+
+
+TLineEMA = input(8, minval=1, title="Trigger Line")
+TLine = ema(close, TLineEMA)
+
+
+plot(TLine, color=yellow, title="T-Line EMA", linewidth=1)
+
+aboveTLine = close > TLine
+belowTLine =  close < TLine 
+
+
+barcolor(ms or blk and aboveTLine and k <= 25 and d <= 25  ? yellow : na)  
+barcolor(bek and belowTLine and k >= 75 and d >= 75 ? fuchsia : na)
+barcolor(ps and aboveTLine and k <= 25 and d <= 25 ? yellow : na)
+barcolor(blk and aboveTLine and k <= 25 and d <= 25 ? yellow : na)
+barcolor(ble and aboveTLine and k <= 25 and d <= 25 ? yellow : na)
+barcolor(dcc and belowTLine and k >= 75 and d >= 75 ? fuchsia : na)
+barcolor(h and aboveTLine and k <= 25 and d <= 25 ? yellow : na)
+barcolor(ih and aboveTLine and k <= 25 and d <= 25 ? yellow : na)
+barcolor(ss and belowTLine and k >= 75 and d >= 75 ? fuchsia : na)
+barcolor(es and belowTLine and k >= 75 and d >= 75 ? fuchsia : na)
+barcolor(ih or beh and belowTLine and k >= 75 and d >= 75 ? fuchsia : na)
