@@ -29,7 +29,7 @@ bgcolor(shortCondition ? color.new(color.red, 85) : na)
 
 // === Long/Short Entry Labels ===
 if longCondition
-    label.new(bar_index, low, "Long", style=label.style_labelup, color=color.green, textcolor=color.white)
+    label.new(bar_index, low, "Long", style=label.style_label_up, color=color.green, textcolor=color.white)
 
 if shortCondition
-    label.new(bar_index, high, "Short", style=label.style_labeldown, color=color.red, textcolor=color.white)
+    label.new(bar_index, high, "Short", style=label.style_label_down, color=color.red, textcolor=color.white)
