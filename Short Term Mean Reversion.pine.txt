@@ -1,0 +1,35 @@
+//@version=5
+indicator("Short Term Mean Reversion", overlay=true)
+
+// === User Inputs ===
+length = input.int(20, title="Bollinger Band Length")
+src = input.source(close, title="Source")
+mult = input.float(2.0, title="Std Dev Multiplier")
+
+// === Bollinger Bands Calculation ===
+basis = ta.sma(src, length)
+dev = mult * ta.stdev(src, length)
+upper = basis + dev
+lower = basis - dev
+
+// === Entry Conditions ===
+// Long when open < lower band and close > open (bullish candle)
+longCondition = open < lower and close > open
+
+// Short when open > upper band and close < open (bearish candle)
+shortCondition = open > upper and close < open
+
+// === Plot Signals ===
+plotshape(longCondition, title="Long Signal", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(shortCondition, title="Short Signal", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+// === Background Highlights ===
+bgcolor(longCondition ? color.new(color.green, 85) : na)
+bgcolor(shortCondition ? color.new(color.red, 85) : na)
+
+// === Long/Short Entry Labels ===
+if longCondition
+    label.new(bar_index, low, "Long", style=label.style_labelup, color=color.green, textcolor=color.white)
+
+if shortCondition
+    label.new(bar_index, high, "Short", style=label.style_labeldown, color=color.red, textcolor=color.white)
