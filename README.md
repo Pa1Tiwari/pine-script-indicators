@@ -49,11 +49,11 @@ The full Pine Script code for the indicator is available in the ([src/MultiAvera
 ### **Usage:**
 Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **swing trading**. The script provides critical information for making more informed entries and exits based on trend alignment across timeframes.
 
-#Candlestictk Detection
+# Candlestictk Detection
 
 ## Description
 
-###Core Functionality
+### Core Functionality
 -This indicator combines three technical analysis approaches to generate trading signals:
 
 -Candlestick Pattern Recognition - Identifies 12 classic reversal patterns
