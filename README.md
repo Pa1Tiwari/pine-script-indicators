@@ -35,7 +35,7 @@ The script supports two fully customizable modules with three averages each, giv
 
 
 ## Pine Script Code:
-The full Pine Script code for the indicator is available in the `src/ultimate_multi_tf_multi_averages.pine` file.
+The full Pine Script code for the indicator is available in the (src/MultiAverages MultiTimeframe Indicator.txt)
 
 
 ### **Core Features:**
