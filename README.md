@@ -23,5 +23,30 @@ The full Pine Script code for the indicator is available in the (https://github.
 This indicator works best in **range-bound markets** or for **short-term scalping** strategies. It is recommended to use it in conjunction with other indicators or price action analysis for better accuracy.
 
 
+# Ultimate Multi-Timeframe Multi-Averages
+
+## Description
+The **Ultimate Multi-Timeframe Multi-Averages** indicator is a powerful tool for tracking multiple moving averages across different timeframes. It allows traders to overlay **EMA, SMA, SMMA, WMA, and VWMA** from higher or lower timeframes onto any chart. This is particularly useful for identifying broader trend directions, support/resistance levels, and crossovers without switching timeframes.
+
+The script supports two fully customizable modules with three averages each, giving you deep control over your technical analysis setup.
+
+### **Screenshot of Indicator in Action:**
+![Ultimate Multi-Timeframe Multi-Averages](./screenshots/ultimate_multitf_multiavg.png)
+
+
+## Pine Script Code:
+The full Pine Script code for the indicator is available in the `src/ultimate_multi_tf_multi_averages.pine` file.
+
+
+### **Core Features:**
+- Displays **multiple types of moving averages** (EMA, SMA, SMMA, WMA, VWMA).
+- Supports **multi-timeframe plotting** for all averages (e.g., daily EMA on a 1-hour chart).
+- Highlights **crossovers between moving averages** for better entry/exit decision-making.
+- Two independent modules for comparing averages from different timeframes.
+- Optional usage of the current chart’s timeframe for the second module.
+
+### **Usage:**
+Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **swing trading**. The script provides critical information for making more informed entries and exits based on trend alignment across timeframes.
+
 
 
