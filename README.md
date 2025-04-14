@@ -9,7 +9,7 @@ The **Short Term Mean Reversion** indicator identifies potential **counter-trend
 ![Short Term Mean Reversion Indicator](screenshots/short_term_mean_reversion.png)
 
 ## Pine Script Code:
-The full Pine Script code for the indicator is available in the ([src/short_term_mean_reversion.pine](https://github.com/Pa1Tiwari/pine-script-indicators/blob/217cc7e0dff92ad974cffef45b2eadf06387349a/src/short_term_mean_reversion.pine))
+The full Pine Script code for the indicator is available in the (src/Candlestick_detector)
 
 ### **Core Features:**
 - **Long signal** (Green): When the price opens below the lower Bollinger Band and closes higher (bullish reversal).
