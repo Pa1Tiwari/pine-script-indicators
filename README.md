@@ -18,23 +18,10 @@ The full Pine Script code for the indicator is available in the (https://github.
 - Displays visual **signals** on the chart with arrows and labels.
 - Background color highlights for long and short signals.
 
-### **Inputs:**
-- **Length**: Period for Bollinger Band moving average.
-- **Source**: The price source to be used for the calculation.
-- **Std Dev Multiplier**: Standard deviation multiplier for the band width.
-
-### **Visual Features:**
-- **Green background** for Long signals.
-- **Red background** for Short signals.
-- **Long/Short labels** at the entry point.
-  
-
 
 ### **Usage:**
 This indicator works best in **range-bound markets** or for **short-term scalping** strategies. It is recommended to use it in conjunction with other indicators or price action analysis for better accuracy.
 
 
 
-## License:
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
