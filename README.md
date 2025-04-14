@@ -53,7 +53,6 @@ Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **
 
 ## Description
 
-### Core Functionality
 -This indicator combines three technical analysis approaches to generate trading signals:
 
 -Candlestick Pattern Recognition - Identifies 12 classic reversal patterns
@@ -61,4 +60,20 @@ Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **
 -Trend Filter - Uses an 8-period EMA (default) to determine market direction
 
 -Momentum Confirmation - Employs a Stochastic oscillator to validate overbought/oversold conditions
+
+### **Screenshot of Indicator in Action:**
+![Short Term Mean Reversion Indicator](screenshots/short_term_mean_reversion.png)
+
+## Pine Script Code:
+The full Pine Script code for the indicator is available in the ([src/short_term_mean_reversion.pine](https://github.com/Pa1Tiwari/pine-script-indicators/blob/217cc7e0dff92ad974cffef45b2eadf06387349a/src/short_term_mean_reversion.pine))
+
+## Ideal Usage
+-Timeframes: 1H to Daily charts
+
+-Market Conditions: Works best in trending markets
+
+-Confirmation: Should be used with other indicators or price action analysis
+
+-This indicator provides visual pattern recognition with technical confirmation, helping traders spot potential reversal points in the context of the current trend and momentum conditions.
+
 
