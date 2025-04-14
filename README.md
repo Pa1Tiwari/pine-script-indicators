@@ -62,7 +62,7 @@ Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **
 -Momentum Confirmation - Employs a Stochastic oscillator to validate overbought/oversold conditions
 
 ### **Screenshot of Indicator in Action:**
-![Short Term Mean Reversion Indicator](screenshots/short_term_mean_reversion.png)
+![candlestick_detection](screenshots/candlestick_detection.png)
 
 ## Pine Script Code:
 The full Pine Script code for the indicator is available in the ([src/short_term_mean_reversion.pine](https://github.com/Pa1Tiwari/pine-script-indicators/blob/217cc7e0dff92ad974cffef45b2eadf06387349a/src/short_term_mean_reversion.pine))
