@@ -65,7 +65,7 @@ Ideal for **trend-following strategies**, **multi-timeframe confluence**, and **
 ![candlestick_detection](screenshots/candlestick_detection.png)
 
 ## Pine Script Code:
-The full Pine Script code for the indicator is available in the (src/Candlestick_detector)
+The full Pine Script code for the indicator is available in the ([src/Candlestick_detector](https://github.com/Pa1Tiwari/pine-script-indicators/blob/a0cc8bc976fec19013132291e7acba6cddcefe00/src/Candlestick_detector))
 
 ## Ideal Usage
 -Timeframes: 1H to Daily charts
