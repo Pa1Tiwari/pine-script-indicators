@@ -5,6 +5,12 @@ A showcase of advanced Pine Script indicators built for TradingView.
 ## Description
 The **Short Term Mean Reversion** indicator identifies potential **counter-trend trading opportunities** based on price behavior around Bollinger Bands. It detects short-term price reversals when the price deviates significantly from its recent average. This indicator can be used for **scalping** or **range-bound market strategies**.
 
+### **Screenshot of Indicator in Action:**
+![Short Term Mean Reversion Indicator](screenshots /short_term_mean_reversion)
+
+## Pine Script Code:
+The full Pine Script code for the indicator is available in the (src/short_term_mean_reversion.pine)
+
 ### **Core Features:**
 - **Long signal** (Green): When the price opens below the lower Bollinger Band and closes higher (bullish reversal).
 - **Short signal** (Red): When the price opens above the upper Bollinger Band and closes lower (bearish reversal).
@@ -22,14 +28,12 @@ The **Short Term Mean Reversion** indicator identifies potential **counter-trend
 - **Red background** for Short signals.
 - **Long/Short labels** at the entry point.
   
-### **Screenshot of Indicator in Action:**
-![Short Term Mean Reversion Indicator](./images/indicator_screenshot.png)
+
 
 ### **Usage:**
 This indicator works best in **range-bound markets** or for **short-term scalping** strategies. It is recommended to use it in conjunction with other indicators or price action analysis for better accuracy.
 
-## Pine Script Code:
-The full Pine Script code for the indicator is available in the `src/short_term_mean_reversion.pine` file.
+
 
 ## License:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
