@@ -1,9 +1,5 @@
-//Created by Robert Waddell with special thanks to repo32 for his candlestick ID code, DavidR for EMA code and Chris Moody for barcolor code.
-//Also a shameless plug for repo32's "Price above/below EMA" and Chris Moody's "Stochastic MTF"
-//6/5/15
-//Candlestick analysis with buy signals
-//Candlestick patterns are identified above or below the price action.
-study(title ="Candlestick Patterns With EMA and Stochastic", overlay = true)
+
+study(title ="Candlestick Patterns", overlay = true)
 
 length = input(12, minval=1), smoothK = input(3, minval=1), smoothD = input(3, minval=1)
 k = sma(stoch(close, high, low, length), smoothK)
