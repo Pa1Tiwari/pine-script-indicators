@@ -1,6 +1,51 @@
 # pine-script-indicators
 A showcase of advanced Pine Script indicators built for TradingView.
 
+# Market Structure and Order Blocks Indicator  
+
+## Description  
+This Pine Script indicator identifies **market structure shifts** and highlights **order blocks** directly on the chart.  
+It plots swing highs and lows based on pivot logic, dynamically extending them until invalidation, and then marks bullish or bearish **Fair Value Gaps (FVGs)** that emerge from structure breaks.  
+
+The script supports **multi-timeframe analysis** by letting you choose a higher timeframe for structure calculation, enabling traders to combine lower-timeframe execution with higher-timeframe order block context.  
+
+---
+
+## Screenshot  
+*(Add your chart screenshot here)*  
+
+---
+
+## Code Path  
+`/MarketStructure_OrderBlocks/MS_OB.pine`  
+
+---
+
+
+## Features  
+- Detects and plots **swing highs and swing lows** dynamically.  
+- Automatically extends swing lines until structure is broken.  
+- Highlights **bullish and bearish Fair Value Gaps (FVGs)** that form after structural breaks.  
+- Customizable **pivot lookback (calculation bars)** to refine swing detection.  
+- Multi-timeframe support: analyze structure and order blocks from any timeframe.  
+- Color-coded visuals for clarity:  
+  - Maroon lines → Swing highs  
+  - Aqua lines → Swing lows  
+  - Teal boxes → Bullish FVGs  
+  - Maroon boxes → Bearish FVGs  
+
+---
+
+## Usage  
+1. Add the indicator to your TradingView chart.  
+2. Select a higher timeframe for structure (e.g., 1H or 4H) while trading lower timeframes.  
+3. Use swing levels and FVG zones to identify liquidity areas and order block formations.  
+4. Combine with other Smart Money Concepts (SMC) tools for confluence.  
+
+---
+
+
+
 # Fair Value Gap (FVG) Indicator  
 
 ## Description  
