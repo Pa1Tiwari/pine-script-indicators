@@ -12,12 +12,13 @@ The script supports **multi-timeframe analysis** by letting you choose a higher 
 ---
 
 ## Screenshot  
-*(Add your chart screenshot here)*  
+![MTF Orderblock Screenshot](screenshots/mtf-orderblock-screenshot.png) 
+
 
 ---
 
 ## Code Path  
-`/MarketStructure_OrderBlocks/MS_OB.pine`  
+The full Pine Script code for the indicator is available in the [src/mtf-orderblock-src](https://github.com/Pa1Tiwari/pine-script-indicators/blob/f9a5024a995ab0e4ceb6371d1e2816d77c6cc816/src/mtf-orderblock-src)
 
 ---
 
