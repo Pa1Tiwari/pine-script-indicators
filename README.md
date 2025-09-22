@@ -1,5 +1,48 @@
 # pine-script-indicators
 A showcase of advanced Pine Script indicators built for TradingView.
+
+# Fair Value Gap (FVG) Indicator  
+
+## Description  
+This Pine Script indicator automatically detects and highlights **Fair Value Gaps (FVGs)** on the chart.  
+It identifies both **bullish** and **bearish** FVGs using swing-based logic and dynamically extends the gaps until they are filled.  
+The script includes advanced filtering such as **gap size thresholds**, **swing point validation**, and an optional **09:15 candle-based calculation** (useful for Indian markets).  
+
+FVGs are widely used in institutional trading concepts to identify areas where price may return to rebalance liquidity.  
+
+---
+
+## Screenshot  
+*(Add your chart screenshot here)*  
+
+---
+
+## Code Path  
+`/FVGs/FVGs.pine`  
+
+---
+
+## Features  
+- Detects **bullish and bearish Fair Value Gaps** in real-time.  
+- Highlights FVGs with colored boxes:  
+  - Green = Bullish gaps  
+  - Red = Bearish gaps  
+- Automatic extension of FVG boxes until price closes the imbalance.  
+- Adjustable **minimum and maximum gap size** (percentage-based).  
+- Swing validation using customizable bar lookback for strong levels.  
+- Optional **09:15 candle-based FVG detection** (for markets that open at that time, e.g., NSE).  
+- Auto-clears old FVGs once the user-defined history limit is reached.  
+
+---
+
+## Usage  
+1. Add the indicator to your TradingView chart.  
+2. Adjust FVG size filters and swing settings to match your strategy.  
+3. Use the highlighted zones to plan liquidity-based setups (e.g., re-entries, continuation trades, or reversals).  
+4. Combine with market structure or order blocks for confluence.  
+
+---
+
 # Short Term Mean Reversion Indicator
 
 ## Description
