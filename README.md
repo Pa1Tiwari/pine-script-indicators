@@ -18,7 +18,7 @@ FVGs are widely used in institutional trading concepts to identify areas where p
 ---
 
 ## Code Path  
-`/FVGs/FVGs.pine`  
+The full Pine Script code for the indicator is available in the [src/fvg-indicator-src](https://github.com/Pa1Tiwari/pine-script-indicators/blob/ceece8cf6dbcb29eb553075acd11d94e107b7d59/src/fvg-indicator-src)
 
 ---
 
