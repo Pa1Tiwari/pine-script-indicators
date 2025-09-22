@@ -1,0 +1,104 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © pawantiwariii4406
+
+//@version=6
+indicator("market structure and order blocks" , overlay = true)
+
+time_frame = input.timeframe('' , 'Timeframe : ')
+
+//@variable calc_bars is the no. of bars used for calculation of pivot high/low
+calc_bars = input(5 , 'calculation bars for swing')
+
+find_index(ratio , price , bool High ) =>
+    index = bar_index - calc_bars*ratio 
+    for i = 0 to ratio
+        offset = ratio*calc_bars + i
+        if High and high[offset] == price
+            index := bar_index-offset
+        else if not High and low[offset] == price
+            index := bar_index-offset
+    index 
+
+
+convert_timeframe(time_frame) =>
+    time_frame == '5' ? 5 : time_frame == '15' ? 15 : time_frame == '30' ? 30 : time_frame == '45' ? 45 : time_frame == '60' ? 60 : time_frame == '120' ? 120 : time_frame == '180' ? 180 : 1
+    
+ratio = (convert_timeframe(time_frame)  /convert_timeframe(timeframe.period) )  >= 1 ?   (convert_timeframe(time_frame)  /convert_timeframe(timeframe.period) ) : 1                  
+
+MS_OB(close_ , H , H_1 , H_2 , L , L_1 , L_2 , pivot_high , pivot_low) =>
+    //#region  -- order blocks --
+    //@variable declaring a swing_high_line line variable to store current swing high line
+    //@variable declaring a swing_low_line line variable to store current swing low line
+    var swing_high_line = line(na)
+    var swing_low_line  = line(na)
+
+    
+
+    //@variable true when pivot high/low is found respectively
+    // pivot_high = ta.pivothigh(calc_bars , calc_bars)
+    // pivot_low  = ta.pivotlow(calc_bars , calc_bars)
+
+    // @variable arrays to store swing high/low line respectively
+    var swing_H_arr = array.new<line>()
+    var swing_L_arr = array.new<line>()
+
+    //@function if pivot high is found then draws a line from pivot candle to current candle and pushesh it in array
+    if not na(pivot_high)
+        if swing_high_line.get_x2() == bar_index-1
+            line.set_x2(swing_high_line , bar_index-calc_bars*ratio)
+        swing_H_arr.push(swing_high_line)
+        swing_high_line := line.new(find_index(ratio , pivot_high , true) , pivot_high , bar_index , pivot_high , color = color.maroon  , width = 2)
+        
+    //@function if line is not muttated then extends the swing high line to current bar index
+    if close_ < swing_high_line.get_y2() and swing_high_line.get_x2() >= bar_index-1
+        line.set_x2(swing_high_line , bar_index)
+        
+    //@function if pivot low is found then draws a line from pivot candle to current candle and pushesh it in array
+    if not na(pivot_low)
+        if swing_low_line.get_x2() == bar_index-1
+            line.set_x2(swing_low_line , bar_index-calc_bars*ratio)
+        swing_L_arr.push(swing_low_line)
+        swing_low_line := line.new(find_index(ratio , pivot_low , false) , pivot_low , bar_index , pivot_low , color = color.aqua , width = 2)
+        
+    //@function if line is not muttated then extends the swing low line to current bar index
+    if close_ > swing_low_line.get_y2() and swing_low_line.get_x2() >= bar_index-1
+        line.set_x2(swing_low_line , bar_index)
+    //#endregion   ---
+
+
+    //#region  -- FVGs --
+    //@function checks if the bar breaks swing high line 
+    swing_H_break = close_ > swing_high_line.get_y2() and bar_index-1 == swing_high_line.get_x2()
+    //@function checks if the bar breaks swing low line 
+    swing_L_break = close_ < swing_low_line.get_y2() and bar_index-1  == swing_low_line.get_x2()
+
+    // bgcolor(swing_H_break ? color.new(color.lime , 95) : na )
+    // bgcolor(swing_L_break ? color.new(color.maroon , 95) : na )
+
+    //@variable arrays to store bull_fvg/bear_fvg respectively
+    var bull_fvg_arr = array.new<box>()
+    var bear_fvg_arr = array.new<box>()
+
+    //@function drawing fvgs if fvg is true and previous bar broke the swing high/low line respectively
+    if L - H_2 > 0 and (swing_H_break[1] )
+        bull_fvg = box.new(bar_index-2 , H_2 , bar_index , math.min(L_2,L_1) , bgcolor =  color.new(color.teal , 70) , border_color = color.white)
+        bull_fvg_arr.push(bull_fvg)
+    if L_2 - H > 0 and (swing_L_break[1] )
+        bear_fvg = box.new(bar_index-2 , math.max(H_2,H_1) , bar_index , L_2 , bgcolor =  color.new(color.maroon , 70), border_color = color.white)
+        bear_fvg_arr.push(bear_fvg)
+
+    //@function extending the unmuttated fvgs to current bars index
+    for bull_fvg in bull_fvg_arr
+        if close_ > bull_fvg.get_bottom() and bull_fvg.get_right() >= bar_index-1
+            bull_fvg.set_right(bar_index)
+    for bear_fvg in bear_fvg_arr
+        if close_ < bear_fvg.get_top() and bear_fvg.get_right() >= bar_index-1
+            bear_fvg.set_right(bar_index)
+
+
+    //#endregions 
+
+
+
+[close_ , H , H_1 , H_2 , L , L_1 , L_2 , bar_index_ , pivot_high , pivot_low] = request.security( syminfo.tickerid , time_frame , [close , high , high[1] , high[2] , low , low[1] , low[2] , bar_index , ta.pivothigh(calc_bars , calc_bars) , ta.pivotlow(calc_bars , calc_bars)])
+MS_OB(close_ , H , H_1 , H_2 , L , L_1 , L_2  , pivot_high , pivot_low)
