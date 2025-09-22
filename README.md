@@ -13,7 +13,7 @@ FVGs are widely used in institutional trading concepts to identify areas where p
 ---
 
 ## Screenshot  
-*(Add your chart screenshot here)*  
+(screenshots/FVG indicator screenshot.png) 
 
 ---
 
