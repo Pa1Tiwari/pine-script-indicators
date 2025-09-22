@@ -1,0 +1,78 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © pawantiwariii4406
+
+//@version=6
+indicator("FVGs" , overlay = true , max_boxes_count = 500)
+
+fvg_0915      = input.bool(false , 'calculate fvg using 09:15 candle')
+previous_fvgs = input(20 , 'Number of previous fvgs : ')
+fvg_size      = input.float(0 , 'min fvg size in % : ' , group = 'FVGs size')
+max_fvg_size      = input.float(10 , 'max fvg size in % : ', group = 'FVGs size')
+
+//@variable array to store bullish fvgs
+var a_bf = array.new<box>()
+//@variable array to store bearish fvgs 
+var a_bef = array.new<box>() 
+
+lowest_fvg_point = ta.lowest(low , 3 )
+highest_fvg_point = ta.highest(high , 3)
+
+lowest_n_bars = ta.lowest(low , input.int(5 , 'bars to calculate lowest point', group = 'Bars to calculate swing'))
+highest_n_bars = ta.highest(high , input.int(5 , 'bars to calculate highest point', group = 'Bars to calculate swing'))
+
+// Build today's 09:15 timestamp in exchange timezone
+nineFifteen = timestamp("GMT+5:30", year, month, dayofmonth, 9, 15)
+
+// Check current, previous, and previous of previous bars
+is915      = time == nineFifteen
+is915Prev  = time[1] == nineFifteen
+is915Prev2 = time[2] == nineFifteen
+
+condition = (not is915 and  not is915Prev) or fvg_0915
+
+// detacting bullish FVGs then plotting boxes and appending them in array
+if low - high[2] > ((fvg_size/100)*close) and low - high[2] < ((max_fvg_size/100)*close)  and condition and lowest_fvg_point == lowest_n_bars
+    bull_fvg = box.new(chart.point.from_index(bar_index-2,low) , chart.point.from_index(bar_index,high[2]) , border_color = color.silver , bgcolor = color.new(color.lime , 70))
+    a_bf.push(bull_fvg)
+
+// detacting bearish FVGs then plotting boxes and appending them in array
+if low[2] - high > ((fvg_size/100)*close) and low[2] - high < ((max_fvg_size/100)*close) and condition  and highest_fvg_point == highest_n_bars
+    bear_fvg = box.new(chart.point.from_index(bar_index-2,low[2]) , chart.point.from_index(bar_index,high) , border_color = color.silver , bgcolor = color.new(color.maroon , 70))
+    a_bef.push(bear_fvg)
+
+
+
+//#region if fvg array size increases by specified size then deleting the last one
+if a_bf.size() > previous_fvgs
+    for [i,bull_fvg] in a_bf
+        if a_bf.size() <= previous_fvgs
+            break
+        else if bull_fvg.get_right() < (bar_index - 1)
+            box_ = a_bf.remove(i)
+            box.delete(box_)
+if a_bf.size() > previous_fvgs
+    del_bullfvg = a_bf.shift()
+    box.delete(del_bullfvg)
+    
+
+if a_bef.size() > previous_fvgs
+    for [i , bear_fvg] in a_bef
+        if a_bef.size() <= previous_fvgs
+            break
+        else if bear_fvg.get_right() < (bar_index - 1)
+            box_ = a_bef.remove(i)
+            box.delete(box_)
+if a_bef.size() > previous_fvgs
+    del_bearfvg = a_bef.shift()
+    box.delete(del_bearfvg)
+//#endregion
+
+// modifying mutated fvgs
+for bull_fvg in a_bf
+    if close > bull_fvg.get_bottom() and bull_fvg.get_right() >= bar_index - 1
+        bull_fvg.set_right(bar_index)
+
+for bear_fvg in a_bef
+    if close < bear_fvg.get_top() and bear_fvg.get_right() >= bar_index - 1
+        bear_fvg.set_right(bar_index)
+
