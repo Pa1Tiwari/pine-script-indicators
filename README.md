@@ -97,7 +97,7 @@ The **Short Term Mean Reversion** indicator identifies potential **counter-trend
 ### **Screenshot of Indicator in Action:**
 ![Short Term Mean Reversion Indicator](screenshots/short_term_mean_reversion.png)
 
-## contact for Script Code:
+### contact for Script Code
 
 ### **Core Features:**
 - **Long signal** (Green): When the price opens below the lower Bollinger Band and closes higher (bullish reversal).
