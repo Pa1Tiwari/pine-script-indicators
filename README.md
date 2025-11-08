@@ -1,6 +1,57 @@
 # pine-script-indicators
 A showcase of advanced Pine Script indicators built for TradingView.
 
+# Turtle Trader Strategy — Pine Script Strategy (Backtest-Ready)
+
+This repository contains a complete Pine Script implementation of the **Turtle Trader Strategy**, one of the most famous trend-following systems in trading history.  
+The strategy is fully **backtestable**, **customizable**, and designed to help traders clearly visualize entries, exits, stop-loss, and target levels on their TradingView charts.
+
+---
+
+## Description
+The Turtle Trader Strategy is based on breakout rules originally used by the legendary “Turtles.”  
+This Pine Script version replicates the same logic using Donchian-style breakouts, combined with modern features like dynamic stop/target visualization and customizable parameters.
+
+The goal is to give traders a clear and flexible tool that can be tested, optimized, and visually interpreted with ease.
+
+---
+
+## Screenshot
+Below is an example of the Turtle Trader Strategy in action on TradingView:
+
+![Turtle Trader Strategy Screenshot](SPX_2025-11-04_14-13-27.png)
+
+---
+
+
+## Features
+- Backtest-ready Pine Script v5 strategy  
+- Breakout-based entry and exit logic  
+- Dynamic visualization of target and stop-loss zones  
+- Customizable inputs for lengths, risk parameters, and display options  
+- Automatic entry, exit, and reversal signals  
+- Clean chart design with minimal visual clutter  
+- Fully compatible with TradingView alerts  
+
+---
+
+## Inputs
+- **Breakout Length:** Controls how far back highs/lows are checked for signals  
+- **Stop-Loss & Target Multipliers:** Adjusts the size of SL/TP zones  
+- **Position Size:** Defines strategy risk per trade  
+- **Show Zones:** Toggles visual stop/target shading  
+- **Color & Style Settings:** Customizable for all plotted elements  
+
+---
+
+## Visual Features
+- Green shaded areas represent take-profit zones  
+- Red shaded areas represent stop-loss zones  
+- Blue breakout lines show entry levels  
+- "Long", "Short", and "Exit" markers display clear signal points  
+
+---
+
 # Market Structure and Order Blocks Indicator  
 
 ## Description  
@@ -12,7 +63,7 @@ The script supports **multi-timeframe analysis** by letting you choose a higher 
 ---
 
 ## Screenshot  
-![MTF Orderblock Screenshot](screenshots/mtf-orderblock-screenshot.png) 
+![MTF Orderblock Screenshot](screenshots/turtle_trader_strategy.png) 
 
 
 ---
