@@ -19,7 +19,7 @@ The goal is to give traders a clear and flexible tool that can be tested, optimi
 ## Screenshot
 Below is an example of the Turtle Trader Strategy in action on TradingView:
 
-![Turtle Trader Strategy Screenshot](SPX_2025-11-04_14-13-27.png)
+![Turtle Trader Strategy Screenshot](turtle_trader_strategy.png)
 
 ---
 
@@ -63,7 +63,7 @@ The script supports **multi-timeframe analysis** by letting you choose a higher 
 ---
 
 ## Screenshot  
-![MTF Orderblock Screenshot](screenshots/turtle_trader_strategy.png) 
+![MTF Orderblock Screenshot](screenshots/mtf-orderblock-srceenshot.png) 
 
 
 ---
