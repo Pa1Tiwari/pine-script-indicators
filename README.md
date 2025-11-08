@@ -51,7 +51,8 @@ Below is an example of the Turtle Trader Strategy in action on TradingView:
 - "Long", "Short", and "Exit" markers display clear signal points  
 
 ---
-
+### Contact for Script Code
+---
 # Market Structure and Order Blocks Indicator  
 
 ## Description  
